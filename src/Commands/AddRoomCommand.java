@@ -14,4 +14,14 @@ public class AddRoomCommand implements Command {
         String name = player.getNameOfCurrentRoom();
         World.getInstance().addDirectedEdge(name, response);
     }
+
+    @Override
+    public String displayCommandInfo() {
+        return "addroom || adds specified room with a 2-way connection to current room";
+    }
+
+    @Override
+    public String getName() {
+        return "AddRoom";
+    }
 }

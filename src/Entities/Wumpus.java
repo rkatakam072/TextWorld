@@ -7,6 +7,7 @@ public class Wumpus extends GenericEntity {
 
     private boolean canMove;
 
+    //todo: fix taking Wumpuses
     public Wumpus(World.Room room) {
         super(" wumpus");
         this.description = " a wierd thing";

@@ -10,4 +10,14 @@ public class GetWumpus implements Command {
         Player player = World.getInstance().getPlayer();
         player.getWumpus();
     }
+
+    @Override
+    public String displayCommandInfo() {
+        return "getWumpus ||  gets wumpus in room, if wumpus is in your room";
+    }
+
+    @Override
+    public String getName() {
+        return "getWumpus";
+    }
 }

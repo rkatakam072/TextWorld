@@ -15,7 +15,7 @@ public class Main {
 
         String response = "";
         Scanner in = new Scanner(System.in);
-        displayCommands();
+        commandParser.displayCommands();
         System.out.println("-------------");
 
         while (true){
@@ -27,20 +27,7 @@ public class Main {
             System.out.println("");
 
             Command command = commandParser.parser(response);
-            command.execute();
+            if (command != null) command.execute();
         }
-
-    }
-
-    private static void displayCommands() {
-        System.out.println("Possible commands:");
-        System.out.println("go  \t\t|| goes to specified room");
-        System.out.println("look \t\t\t\t|| displays neighboring rooms and everything in room  ");
-        System.out.println("addroom || adds specified room with a 2-way connection to current room");
-        System.out.println("quit || quits game");
-        System.out.println("help || displays commands");
-        System.out.println("getWumpus ||  gets wumpus in room");
-        System.out.println("Take || can pickup item from room");
-        System.out.println("showInventory || displays your inventory");
     }
 }

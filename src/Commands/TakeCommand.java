@@ -10,4 +10,14 @@ public class TakeCommand implements Command{
 
         World.getInstance().getPlayer().pickUpItem(response);
     }
+
+    @Override
+    public String displayCommandInfo() {
+        return "Take || can pickup item from room";
+    }
+
+    @Override
+    public String getName() {
+        return "take";
+    }
 }

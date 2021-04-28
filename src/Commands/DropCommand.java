@@ -11,4 +11,14 @@ public class DropCommand implements Command {
 
 
     }
+
+    @Override
+    public String displayCommandInfo() {
+       return  "Drop || drops item in your inventory, in the room your in";
+    }
+
+    @Override
+    public String getName() {
+        return "Drop";
+    }
 }

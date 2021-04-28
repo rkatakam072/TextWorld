@@ -8,4 +8,14 @@ public class ShowInventoryCommand implements Command{
     public void execute() {
         System.out.println(World.getInstance().getPlayer().getInventoryString());
     }
+
+    @Override
+    public String displayCommandInfo() {
+        return "showInventory || displays your inventory";
+    }
+
+    @Override
+    public String getName() {
+        return "showInventory";
+    }
 }

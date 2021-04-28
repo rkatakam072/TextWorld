@@ -13,4 +13,14 @@ public class LookCommand implements Command {
         System.out.println(player.getNamesOfItemInRoom());
         System.out.println(player.getNamesOfEntitiesInRoom());
     }
+
+    @Override
+    public String displayCommandInfo() {
+        return "look \t\t\t\t|| displays neighboring rooms and everything in room ";
+    }
+
+    @Override
+    public String getName() {
+        return "look";
+    }
 }

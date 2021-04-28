@@ -1,25 +1,49 @@
 package Commands;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Objects;
+
 public class CommandParser {
 
+    private final ArrayList<Command> commands;
 
-    public Command parser(String response){
-        String commandWord = getFirstWord(response);
+    public CommandParser() {
+        commands = getCommands();
+    }
 
-        if (commandWord.equalsIgnoreCase("addroom")) return new AddRoomCommand();
-        else if (commandWord.equalsIgnoreCase("Drop")) return new DropCommand();
-        else if (commandWord.equalsIgnoreCase("go")) return new GoCommand();
-        else if (commandWord.equalsIgnoreCase("look")) return new LookCommand();
-        else if (commandWord.equalsIgnoreCase("Quit")) return new QuitCommand();
-        else if (commandWord.equalsIgnoreCase("ShowInventory")) return new ShowInventoryCommand();
-        else if (commandWord.equalsIgnoreCase("Take")) return new TakeCommand();
-        else if (commandWord.equalsIgnoreCase("getWumpus")) return new GetWumpus();
+
+    public Command parser(String response) {
+        response = response.trim();
+
+        for (Command command : commands) {
+            if (command.getName().equalsIgnoreCase(response)) return command;
+        }
 
         return null;
     }
 
-    private String getFirstWord(String response) {
-        return response.split(" ")[0];
+    private ArrayList<Command> getCommands() {
+        ArrayList<Command> commands = new ArrayList<>();
+        File file = new File("src/Commands");
+        for (String f : Objects.requireNonNull(file.list())) {
+            try {
+                Object object = Class.forName("Commands." + f.substring(0, f.length() - 5)).getConstructor().newInstance();
+                if (object instanceof Command && !f.equals("Command.java")) {
+                    Command command = (Command) object;
+                    commands.add(command);
+                }
+            } catch (Exception e) {
+
+            }
+        }
+        return commands;
+    }
+
+    public void displayCommands() {
+        for (Command command : commands) {
+            command.displayCommandInfo();
+        }
     }
 
 }
