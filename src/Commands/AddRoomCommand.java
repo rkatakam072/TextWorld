@@ -8,7 +8,7 @@ public class AddRoomCommand implements Command {
     public void execute() {
         Player player = World.getInstance().getPlayer();
 
-        String response = getResponse("what is teh name of the room you want to add");
+        String response = getResponse("what is the name of the room you want to add");
         World.getInstance().addRoom(response);
 
         String name = player.getNameOfCurrentRoom();

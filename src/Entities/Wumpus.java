@@ -1,12 +1,17 @@
 package Entities;
 
+import Main.Player;
 import Main.World;
 
 public class Wumpus extends GenericEntity {
 
+    private boolean canMove;
+
     public Wumpus(World.Room room) {
         super(" wumpus");
         this.description = " a wierd thing";
+
+        canMove = true;
 
         setCurrentRoom(room);
     }
@@ -26,21 +31,33 @@ public class Wumpus extends GenericEntity {
         return currentRoom;
     }
 
+    public Wumpus take(Player player) {
+        if (player.isInRoom(getRoom())) {
+
+            canMove = false;
+            return this;
+        }
+
+        return null;
+    }
+
     @Override
     public void move() {
 
-        World.Room room = findAdjacentRoomWithPlayer();
+        if (canMove) {
+            World.Room room = findAdjacentRoomWithPlayer();
 
-        if (getRoom().containsPlayer()) {
-            moveRandomly();
-        } else if (room != null) {
-            if (getRoom().getNeighbors().size() == 1) return;
+            if (getRoom().containsPlayer()) {
+                moveRandomly();
+            } else if (room != null) {
+                if (getRoom().getNeighbors().size() == 1) return;
 
-            World.Room nextRoom;
+                World.Room nextRoom;
 
-            do {
-                nextRoom = getRoom().getRandomRoom();
-            } while (nextRoom.containsPlayer());
+                do {
+                    nextRoom = getRoom().getRandomRoom();
+                } while (nextRoom.containsPlayer());
+            }
         }
     }
 }

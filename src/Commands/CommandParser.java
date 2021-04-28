@@ -13,6 +13,7 @@ public class CommandParser {
         else if (commandWord.equalsIgnoreCase("Quit")) return new QuitCommand();
         else if (commandWord.equalsIgnoreCase("ShowInventory")) return new ShowInventoryCommand();
         else if (commandWord.equalsIgnoreCase("Take")) return new TakeCommand();
+        else if (commandWord.equalsIgnoreCase("getWumpus")) return new GetWumpus();
 
         return null;
     }

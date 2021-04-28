@@ -1,5 +1,6 @@
 package Main;
 
+import Entities.Wumpus;
 import Items.Item;
 import Items.ItemContainer;
 
@@ -11,6 +12,8 @@ public class Player implements ItemContainer {
 
     private final ArrayList<Item> items;
     private World.Room currentRoom;
+
+    private Wumpus wumpus;
 
     public Player(World.Room currentRoom) {
         items = new ArrayList<>();
@@ -77,5 +80,12 @@ public class Player implements ItemContainer {
 
     public String getNamesOfEntitiesInRoom() {
         return getRoom().getStringOfEntities();
+    }
+
+    public void getWumpus() {
+        Wumpus w = getRoom().getWumpus();
+        if (w != null) {
+            this.wumpus = w.take(this);
+        }
     }
 }

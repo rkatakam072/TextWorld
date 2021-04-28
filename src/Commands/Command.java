@@ -8,7 +8,7 @@ public interface Command {
 
     default String getResponse(String question) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(question + ":");
+        System.out.print(question + ">");
         return scanner.nextLine();
     }
 }

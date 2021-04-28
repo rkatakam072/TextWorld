@@ -34,7 +34,7 @@ public class World {
             }
 
             try {
-                Thread.sleep(10_000);
+                Thread.sleep(30_000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -205,6 +205,11 @@ public class World {
             }
 
             return string.toString();
+        }
+
+        public Wumpus getWumpus(){
+            if (wumpus.getRoom() == this) return wumpus;
+            else return null;
         }
     }
 }
