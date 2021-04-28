@@ -26,7 +26,7 @@ public class World {
     private final Popstar popstar;
     private final Chicken chicken;
 
-    Thread movingEntitiesThread = new Thread() {
+    private final Thread movingEntitiesThread = new Thread() {
         @Override
         public void run() {
             for (Entity entity : entities) {
@@ -192,8 +192,8 @@ public class World {
 
         public String getStringOfEntities() {
             StringBuilder string = new StringBuilder();
-            for (Entity entity : entities){
-                if (entity.getRoom() == this)string.append(" ").append(entity.getName());
+            for (Entity entity : entities) {
+                if (entity.getRoom() == this) string.append(" ").append(entity.getName());
             }
 
             return string.toString();
