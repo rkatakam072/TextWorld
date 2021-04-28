@@ -9,7 +9,7 @@ public class Popstar extends GenericEntity {
         super("popstar");
         this.description = "a really annoying person";
 
-        setCurrentRoom(currentRoom);
+        setCurrentRoom(room);
     }
 
     @Override

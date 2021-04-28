@@ -51,7 +51,6 @@ public class World {
         this.wumpus = new Wumpus(getRoom("closet"));
         this.popstar = new Popstar(getRoom("dungeon"));
         this.chicken = new Chicken(getRoom("bathroom"));
-
         addEntitiesToArrayList();
     }
 
@@ -66,9 +65,16 @@ public class World {
         addRoom("closet");
         addRoom("dungeon");
         addRoom("bathroom");
+        addRoom("bedroom");
+        addRoom("Theater");
+        addRoom("playroom");
+        addRoom("basketballCourt");
 
         addDirectedEdge("hall", "dungeon");
         addUndirectedEdge("hall", "closet");
+        addUndirectedEdge("dungeon", "bathroom");
+        addUndirectedEdge("theater", "playroom");
+        addUndirectedEdge("basketballCourt", "closet");
     }
 
     public void moveEntities() {
@@ -186,6 +192,8 @@ public class World {
         }
 
         public Room getRandomRoom() {
+            if (neighbors.size() == 0) return this;
+
             int rand = (int) (Math.random() * neighbors.size());
             return neighbors.get(rand);
         }

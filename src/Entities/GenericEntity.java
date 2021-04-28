@@ -16,7 +16,8 @@ public abstract class GenericEntity implements Entity {
 
 
     public void setCurrentRoom(World.Room room) {
-        this.currentRoom = room;
+        if (currentRoom == null) this.currentRoom = room;
+        else if (currentRoom.hasNeighbor(room)) this.currentRoom = room;
     }
 
     protected void moveRandomly() {
@@ -24,6 +25,8 @@ public abstract class GenericEntity implements Entity {
     }
 
     protected World.Room findAdjacentRoomWithPlayer() {
+
+        if (getRoom().getNeighbors().size() == 0) return getRoom();
         for (World.Room neighbor : getRoom().getNeighbors()) {
             if (neighbor.containsPlayer()) {
                 return neighbor;
