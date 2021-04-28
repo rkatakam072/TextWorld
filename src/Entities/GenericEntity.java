@@ -16,7 +16,7 @@ public abstract class GenericEntity implements Entity {
 
 
     public void setCurrentRoom(World.Room room) {
-        if (currentRoom.hasNeighbor(room)) this.currentRoom = room;
+        this.currentRoom = room;
     }
 
     protected void moveRandomly() {
