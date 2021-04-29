@@ -3,8 +3,11 @@ package Entities;
 import Main.World;
 
 public interface Entity {
-    public String getName();
-    public String getDescription();
-    public World.Room getRoom();
-    public void move();
+    public String getName(); //return name
+
+    public String getDescription(); // returns description
+
+    public World.Room getRoom(); //return room
+
+    public void move();// each entity should be moving
 }

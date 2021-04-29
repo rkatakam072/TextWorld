@@ -5,6 +5,10 @@ import Main.World;
 public class Popstar extends GenericEntity {
 
 
+    /**
+     * constructs a popstar
+     * @param room room where the popstar starts
+     */
     public Popstar(World.Room room) {
         super("popstar");
         this.description = "a really annoying person";
@@ -27,6 +31,7 @@ public class Popstar extends GenericEntity {
         return currentRoom;
     }
 
+    // moves to player or randomly if  player is not in neighboring room
     @Override
     public void move() {
         World.Room room = findAdjacentRoomWithPlayer();

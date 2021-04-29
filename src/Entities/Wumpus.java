@@ -5,9 +5,12 @@ import Main.World;
 
 public class Wumpus extends GenericEntity {
 
-    private boolean canMove;
+    private boolean canMove; // if the wumpus can move
 
-    //todo: fix taking Wumpuses
+    /**
+     * constructs the wumpus
+     * @param room were the wumpus initially is located
+     */
     public Wumpus(World.Room room) {
         super(" wumpus");
         this.description = " a wierd thing";
@@ -32,6 +35,11 @@ public class Wumpus extends GenericEntity {
         return currentRoom;
     }
 
+    /**
+     * stops the wumpus from moving
+     * @param player makes sure player is in room
+     * @return this instance to giving itself to a player
+     */
     public Wumpus take(Player player) {
         if (player.isInRoom(getRoom())) {
 
@@ -42,6 +50,7 @@ public class Wumpus extends GenericEntity {
         return null;
     }
 
+    // moves away from player
     @Override
     public void move() {
 
@@ -56,7 +65,7 @@ public class Wumpus extends GenericEntity {
                 World.Room nextRoom;
 
                 do {
-                    nextRoom = getRoom().getRandomRoom();
+                    nextRoom = getRoom().getRandomNeighbor();
                 } while (nextRoom.containsPlayer());
             }
         }

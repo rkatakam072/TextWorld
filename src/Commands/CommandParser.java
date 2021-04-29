@@ -6,13 +6,21 @@ import java.util.Objects;
 
 public class CommandParser {
 
-    private final ArrayList<Command> commands;
+    private final ArrayList<Command> commands; // list of commands possible
 
+    /**
+     * constructs CommandParser
+     */
     public CommandParser() {
         commands = getCommands();
     }
 
 
+    /**
+     * does the command
+     * @param response the response/command of which to do
+     * @return a command which you can execute
+     */
     public Command parser(String response) {
         response = response.trim();
 
@@ -23,6 +31,10 @@ public class CommandParser {
         return null;
     }
 
+    /**
+     * gets the commands from the Commands Pakage
+     * @return a list of Commands
+     */
     private ArrayList<Command> getCommands() {
         ArrayList<Command> commands = new ArrayList<>();
         File file = new File("src/Commands");
@@ -40,6 +52,9 @@ public class CommandParser {
         return commands;
     }
 
+    /**
+     * displays all the possible commands
+     */
     public void displayCommands() {
         for (Command command : commands) {
             command.displayCommandInfo();

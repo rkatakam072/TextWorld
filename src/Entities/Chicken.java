@@ -5,6 +5,10 @@ import Main.World;
 public class Chicken extends GenericEntity {
 
 
+    /**
+     * constructs the Chicken
+     * @param room
+     */
     public Chicken(World.Room room) {
         super("chicken");
         this.description = "a chicken";
@@ -27,6 +31,7 @@ public class Chicken extends GenericEntity {
         return currentRoom;
     }
 
+    // moves randomly
     @Override
     public void move() {
         moveRandomly();

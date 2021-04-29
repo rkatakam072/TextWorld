@@ -2,26 +2,22 @@ package Items;
 
 public class Item {
 
-    private String name, description;
+    private final String name, description; // basic things all items have
 
+    /**
+     * constructs an Item
+     * @param name name of the item
+     * @param description description of item if given
+     */
     public Item(String name, String description) {
         this.name = name;
         this.description = description;
     }
 
+    /**
+     * @return the name of the item
+     */
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

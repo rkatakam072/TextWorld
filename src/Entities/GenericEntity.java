@@ -21,7 +21,7 @@ public abstract class GenericEntity implements Entity {
     }
 
     protected void moveRandomly() {
-        setCurrentRoom(getRoom().getRandomRoom());
+        setCurrentRoom(getRoom().getRandomNeighbor());
     }
 
     protected World.Room findAdjacentRoomWithPlayer() {
