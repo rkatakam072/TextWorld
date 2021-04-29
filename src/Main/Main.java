@@ -28,6 +28,7 @@ public class Main {
 
             Command command = commandParser.parser(response);
             if (command != null) command.execute();
+            else commandParser.displayCommands();
         }
     }
 }
